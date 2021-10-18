@@ -10,9 +10,9 @@ package classes;
  * @author relan
  */
 public class Informações {
-   /* public String formulas(){
-        
-    }*/
+    public String formulas(){
+        return "Um LED: R = (VtensãoResistor - VtensãoLed) ÷ I";
+    }
     public String autores(){
         String dados = "Autores do Projeto:";
         return dados += "\nCristiano Afonso Emanuel Francisco da Silva" +
@@ -27,6 +27,6 @@ public class Informações {
     }
     
     public String versao(){
-        return "Versão 0.0.4";
+        return "Versão 0.0.8";
     }
 }

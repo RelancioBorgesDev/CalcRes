@@ -22,6 +22,9 @@ public class Calculadora {
         this.tensaoLed = tensaoLed;
         this.corrente = corrente;
     }
+      public Calculadora() {
+      ;
+    }
     
     //Getter e Setter
     public double getTensaoFonte() {
@@ -49,8 +52,12 @@ public class Calculadora {
     }
     
     
-    public double resistorSerie(){
-        resistencia = (tensaoFonte - tensaoLed) / corrente;
-        return resistencia;
+    public double resistor(){
+        System.out.println(tensaoFonte);
+        System.out.println(tensaoLed);
+        System.out.println(corrente);
+
+        System.out.println((tensaoFonte - tensaoLed) / corrente);
+        return (tensaoFonte - tensaoLed) / corrente;
     }
 }

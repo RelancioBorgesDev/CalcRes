@@ -5,12 +5,15 @@
  */
 package views;
 
+import classes.Calculadora;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author relan
  */
 public class Tela extends javax.swing.JDialog {
-
+    private Calculadora calculadora;
     /**
      * Creates new form Tela
      */
@@ -29,6 +32,8 @@ public class Tela extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroupCalc = new javax.swing.ButtonGroup();
+        jLabel6 = new javax.swing.JLabel();
         jButtonCalcular = new javax.swing.JButton();
         jButtonLimpar = new javax.swing.JButton();
         jRadioButton1 = new javax.swing.JRadioButton();
@@ -42,15 +47,32 @@ public class Tela extends javax.swing.JDialog {
         jTextFieldFonte = new javax.swing.JTextField();
         jTextFieldLed = new javax.swing.JTextField();
         jTextFieldCorrenteLed = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+
+        jLabel6.setText("(V)");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Calculadora - LED");
 
         jButtonCalcular.setText("Calcular");
+        jButtonCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCalcularActionPerformed(evt);
+            }
+        });
 
         jButtonLimpar.setText("Limpar");
+        jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLimparActionPerformed(evt);
+            }
+        });
 
+        buttonGroupCalc.add(jRadioButton1);
         jRadioButton1.setText("Um LED");
+        jRadioButton1.setActionCommand("A");
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton1ActionPerformed(evt);
@@ -58,18 +80,29 @@ public class Tela extends javax.swing.JDialog {
         });
 
         jTextAreaResultado.setColumns(20);
+        jTextAreaResultado.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
         jTextAreaResultado.setRows(5);
         jScrollPane1.setViewportView(jTextAreaResultado);
 
+        buttonGroupCalc.add(jRadioButton2);
         jRadioButton2.setText("LED em série");
+        jRadioButton2.setActionCommand("B");
 
+        buttonGroupCalc.add(jRadioButton3);
         jRadioButton3.setText("LED em paralelo");
+        jRadioButton3.setActionCommand("C");
 
         jLabel1.setText("Tensão da Fonte:");
 
         jLabel2.setText("Tensão do Led:");
 
         jLabel3.setText("Corrente do Led:");
+
+        jLabel4.setText("(V)");
+
+        jLabel5.setText("(V)");
+
+        jLabel7.setText("(mA)");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -80,7 +113,7 @@ public class Tela extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jRadioButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                         .addComponent(jRadioButton2)
                         .addGap(62, 62, 62)
                         .addComponent(jRadioButton3)
@@ -95,11 +128,20 @@ public class Tela extends javax.swing.JDialog {
                             .addComponent(jTextFieldFonte)
                             .addComponent(jTextFieldLed)
                             .addComponent(jTextFieldCorrenteLed, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButtonCalcular, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
-                            .addComponent(jButtonLimpar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(36, 36, 36))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jButtonCalcular, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+                                    .addComponent(jButtonLimpar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(36, 36, 36))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel4))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1)
@@ -118,15 +160,18 @@ public class Tela extends javax.swing.JDialog {
                         .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(jTextFieldFonte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldFonte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(jTextFieldLed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldLed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(jTextFieldCorrenteLed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jTextFieldCorrenteLed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addComponent(jButtonCalcular)
@@ -145,17 +190,61 @@ public class Tela extends javax.swing.JDialog {
 
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
+    private void jButtonCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCalcularActionPerformed
+        // TODO add your handling code here
+          if(jTextFieldFonte.getText().isEmpty()){
+              JOptionPane.showMessageDialog(this, "Preencha o campo da tensão da fonte", "Aviso",0);
+            jTextFieldFonte.requestFocusInWindow();
+            return;
+        }
+           if(jTextFieldCorrenteLed.getText().isEmpty()){
+              JOptionPane.showMessageDialog(this, "Preencha o campo da corrente", "Aviso",0);
+            jTextFieldCorrenteLed.requestFocusInWindow();
+            return;
+        }
+           if(jTextFieldLed.getText().isEmpty()){
+              JOptionPane.showMessageDialog(this, "Preencha o campo da tensão do led", "Aviso",0);
+            jTextFieldLed.requestFocusInWindow();
+            return;
+        }
+           
+      if(buttonGroupCalc.getSelection().getActionCommand() == "A"){
+          calculadora = new Calculadora();
+          calculadora.setCorrente(Double.parseDouble(jTextFieldCorrenteLed.getText()));
+          calculadora.setTensaoFonte(Double.parseDouble(jTextFieldFonte.getText()));
+          calculadora.setTensaoLed(Double.parseDouble(jTextFieldLed.getText()));
+          
+          jTextAreaResultado.setText("Valor do resistor : " + calculadora.resistor()+ "(Ω)");
+      }
+           
+    }//GEN-LAST:event_jButtonCalcularActionPerformed
+
+    private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
+        // TODO add your handling code here:
+            jTextFieldCorrenteLed.setText(null);
+            jTextFieldFonte.setText(null);
+            jTextFieldLed.setText(null);
+            jTextAreaResultado.setText(null);
+            jTextFieldFonte.requestFocusInWindow();
+            buttonGroupCalc.clearSelection();
+    }//GEN-LAST:event_jButtonLimparActionPerformed
+
     /**
      * @param args the command line arguments
      */
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroupCalc;
     private javax.swing.JButton jButtonCalcular;
     private javax.swing.JButton jButtonLimpar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;

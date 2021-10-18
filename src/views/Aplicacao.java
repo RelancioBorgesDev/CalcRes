@@ -61,6 +61,11 @@ public class Aplicacao extends javax.swing.JFrame {
         jMenu2.setText("Informações");
 
         jMenuItemFormula.setText("Fórmulas");
+        jMenuItemFormula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemFormulaActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItemFormula);
 
         jMenuItemAutores.setText("Autores");
@@ -135,13 +140,18 @@ public class Aplicacao extends javax.swing.JFrame {
 
     private void jMenuItemObjetivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemObjetivoActionPerformed
         // TODO add your handling code here:
-          JOptionPane.showMessageDialog(this,informacao.objetivo(),"Autores",1);
+          JOptionPane.showMessageDialog(this,informacao.objetivo(),"Objetivo",1);
     }//GEN-LAST:event_jMenuItemObjetivoActionPerformed
 
     private void jMenuItemVersaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemVersaoActionPerformed
         // TODO add your handling code here:
-         JOptionPane.showMessageDialog(this,informacao.versao(),"Autores",1);
+         JOptionPane.showMessageDialog(this,informacao.versao(),"Versão",1);
     }//GEN-LAST:event_jMenuItemVersaoActionPerformed
+
+    private void jMenuItemFormulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFormulaActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this,informacao.formulas(),"Fórmulas",1);
+    }//GEN-LAST:event_jMenuItemFormulaActionPerformed
 
     /**
      * @param args the command line arguments
