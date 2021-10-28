@@ -11,10 +11,12 @@ package classes;
  */
 public class Informações {
     public String formulas(){
-        return "Um LED: R = (VtensãoResistor - VtensãoLed) ÷ I";
+        return "Um LED: R = (VtensãoResistor - VtensãoLed) ÷ I"+
+                "\nLed em série R = (VtensãoResistor - (VtensãoLed * quantidadeDeLeds)) ÷ I"
+                +"\nLed em paralelo R = (VtensãoResistor - VtensãoLed ) ÷ I * quantidadeDeLeds ";
     }
     public String autores(){
-        String dados = "Autores do Projeto:";
+        String dados = "Autores do Projeto: ";
         return dados += "\nCristiano Afonso Emanuel Francisco da Silva" +
                 "\nJoão Pedro José Assis Hermenegildo" +
                 "\nRelancio Borges dos Santos";
@@ -27,6 +29,6 @@ public class Informações {
     }
     
     public String versao(){
-        return "Versão 0.0.8";
+        return "Versão 0.1.0";
     }
 }

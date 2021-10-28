@@ -11,10 +11,11 @@ package classes;
  */
 public class Calculadora {
      //Atributos
-    public double tensaoFonte;
-    public double tensaoLed;
-    public double corrente;
-    public double resistencia;
+    private double tensaoFonte;
+    private double tensaoLed;
+    private double corrente;
+    private int quantidade;
+
 
     //Contrutor
     public Calculadora(double tensaoFonte, double tensaoLed, double corrente) {
@@ -23,7 +24,7 @@ public class Calculadora {
         this.corrente = corrente;
     }
       public Calculadora() {
-      ;
+     
     }
     
     //Getter e Setter
@@ -51,13 +52,23 @@ public class Calculadora {
         this.corrente = corrente;
     }
     
+      public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
     
     public double resistor(){
-        System.out.println(tensaoFonte);
-        System.out.println(tensaoLed);
-        System.out.println(corrente);
-
-        System.out.println((tensaoFonte - tensaoLed) / corrente);
-        return (tensaoFonte - tensaoLed) / corrente;
+        return (tensaoFonte - tensaoLed) / (corrente / 1000);
     }
+    public double resistorSerie(){
+        return (tensaoFonte - (tensaoLed * quantidade)) / (corrente / 1000);
+    }
+    public double resistorParalelo(){
+        return (tensaoFonte - tensaoLed)  / ((corrente / 1000) * quantidade);
+      
+    }
+    
 }
